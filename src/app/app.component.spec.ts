@@ -1,8 +1,17 @@
 import { TestBed, async } from '@angular/core/testing';
+import {
+  ResponseOptions,
+  Response,
+  Http,
+  BaseRequestOptions,
+  RequestMethod
+} from '@angular/http';
+import { MockBackend, MockConnection } from '@angular/http/testing';
 
 import { AppComponent } from './app.component';
 import { CategoryListComponent } from './category-list/category-list.component';
-import { SearchBoxComponent } from './search-box/search-box.component';
+import { Search } from './pipes/search';
+import { AppSettings } from './app-settings';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -10,8 +19,14 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         CategoryListComponent,
-        SearchBoxComponent
+        Search
       ],
+      providers: [
+        { provide: Http },
+        MockBackend,
+        BaseRequestOptions,
+        AppSettings
+      ]
     }).compileComponents();
   }));
 

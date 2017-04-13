@@ -1,20 +1,9 @@
+<section id="search-box">
+  <label for="filter-input">Search categories</label>
+  <input #input id="filter-input" type="text" placeholder="Start typing to search" accesskey="s" (keyup)="0" />
+</section>
 <section id="category-list">
   <ul>
-    <li><a href="httP://google.com" target="_blank">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on children’s books</a></li>
-    <li><a href="#">Movies based on childre n’s books</a></li>
+    <li *ngFor="let category of categories | async | search: input.value"><a [attr.href]="category.url" target="_blank">{{ category.name }}</a></li>
   </ul>
 </section>
