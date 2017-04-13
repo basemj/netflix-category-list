@@ -1,0 +1,11 @@
+@import "src/variables.scss";
+
+#page-wrapper {
+  padding: $fixed-unit 1rem;
+}
+
+@media screen and (min-width: $medium-min) {
+  #page-wrapper {
+    margin-right: $main-col-width;
+  }
+}

@@ -1,0 +1,51 @@
+@import "src/variables.scss";
+
+#search-box {
+  padding: $fixed-unit 1rem;
+  margin: -$fixed-unit -1rem 0 -1rem;
+  background-color: #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  #filter-input {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    background-color: $grey02;
+    padding: 1rem;
+    border-radius: 3px;
+  }
+}
+
+#category-list {
+  ul {
+    li {
+      list-style-type: none;
+      a {
+        display: block;
+        line-height: 4em;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid $grey02;
+        padding-left: 1rem;
+        &:focus, 
+        &:hover {
+          background-color: $grey02;
+        }
+      }
+      &:nth-child(odd) {
+        background-color: $grey01;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $medium-min) {
+  #category-list {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $main-col-width;
+    bottom: 0;
+    overflow: auto;
+  }
+}

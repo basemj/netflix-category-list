@@ -1,2 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+@import "src/variables.scss";
+
+// some basic resets
+body, html, div, blockquote, img, label, p, h1, h2, h3, h4, h5, h6, pre, ul,
+ol, li, dl, dt, dd, form, a, fieldset, input, th, td
+{
+margin: 0; padding: 0; border: 0; outline: none;
+}
+
+h1 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+label {
+  font-weight: bold;
+  line-height: 1.5rem;
+}
+
+body {
+  font-size: $font-small;
+  font-family: Arial, Helvetica, sans-serif;
+  @media screen and (min-width: $medium-min) {
+    font-size: $font-medium;
+  }
+  @media screen and (min-width: $large-min) {
+    font-size: $font-large;
+  }
+}
+
 @import "src/app/app.component.scss";
+@import "src/app/category-list/category-list.component.scss";
+
