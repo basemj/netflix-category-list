@@ -3,31 +3,19 @@ import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/do';
 
-import { AppSettings } from 'app/app-settings';
-import { Category } from 'app/providers/Category';
+import { Category } from 'app/models/Category';
 
 @Injectable()
 export class CategoriesDataService {
-    private apiEndpoint: string;
-
-    constructor(private http: Http, private _appSettings: AppSettings) {
-        this.apiEndpoint = _appSettings.API_ENDPOINT;
+    constructor(private http: Http) {
     }
 
-    getCategories() {
-        if (window.localStorage['netflixCategoriesList']) {
-            return Observable.create(observer => {
-                observer.next(<Category[]>JSON.parse(window.localStorage['netflixCategoriesList']));
-                observer.complete();
-            });
-        }
+    getCategories(apiEndpoint) {
         return this.http
-            .get(this.apiEndpoint)
+            .get(apiEndpoint)
             .map(this.extractData)
             .catch(this.handleError);
-
     }
 
     private createCategory(content: string) {
@@ -52,12 +40,10 @@ export class CategoriesDataService {
             }
         }
 
-        window.localStorage['netflixCategoriesList'] = JSON.stringify(results);
         return <Category[]>results;
     }
 
     private handleError(error: Response) {
-        console.error(error);
         return Observable.throw(error);
     }
 }

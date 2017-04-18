@@ -1,13 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-import { Category } from 'app/providers/Category';
+import { Category } from 'app/models/Category';
 
 @Pipe({
-    name: 'search',
+    name: 'searchpipe',
     pure: false
 })
 
-export class Search implements PipeTransform {
+export class SearchPipe implements PipeTransform {
 
     tmp = [];
     transform(data: Category[], queryString: string) {

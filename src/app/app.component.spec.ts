@@ -1,17 +1,12 @@
 import { TestBed, async } from '@angular/core/testing';
-import {
-  ResponseOptions,
-  Response,
-  Http,
-  BaseRequestOptions,
-  RequestMethod
-} from '@angular/http';
+import { Http, BaseRequestOptions } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-
 import { AppComponent } from './app.component';
 import { CategoryListComponent } from './category-list/category-list.component';
-import { Search } from './pipes/search';
-import { AppSettings } from './app-settings';
+import { SearchPipe } from './pipes/search.pipe';
+import { AppSettings } from 'app/app-settings';
+import { CategoriesDataService } from 'app/services/categories-data.service';
+import { CategoriesLocalStorageService } from 'app/services/categories-local-storage.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -19,13 +14,15 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         CategoryListComponent,
-        Search
+        SearchPipe
       ],
       providers: [
         { provide: Http },
         MockBackend,
         BaseRequestOptions,
-        AppSettings
+        AppSettings,
+        CategoriesLocalStorageService,
+        CategoriesDataService
       ]
     }).compileComponents();
   }));
@@ -35,5 +32,4 @@ describe('AppComponent', () => {
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-
 });
